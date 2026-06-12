@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">    
+<head>    
+  <meta charset="UTF-8" />    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />    
+  <title>MARCOS.EXE</title>    
+  <link rel="stylesheet" href="style.css" />    
+</head>    
+<body>    
+  <canvas id="star-canvas"></canvas>    
+  <div id="star-phrase" class="star-phrase-overlay"></div>
+  <button id="toggle-stars" class="neon-button toggle-stars">Estrelas</button>    
+
+  <!-- Menu -->    
+  <nav class="menu-terminal hidden" id="menu">    
+    <a href="#terminal-container">Início</a>    
+    <a href="#next-section">Núcleo</a>    
+    <a href="#robo-section">Frodo</a>    
+    <a href="#music-section">Trilha</a>    
+    <a href="#mensagem-section">Mensagem</a>  
+    <a href="#contador-section">Jornada</a>
+    <a href="#item-lendario-section">Item Lendário</a>
+    <a href="#capsulas-section">Cápsulas</a>
+    <a href="#fragmentos-section">Fragmentos</a>  
+    <a href="#condado-section">O Condado</a>
+  </nav>    
+
+  <!-- Terminal -->    
+  <div id="terminal-container">    
+    <div id="terminal"></div><span class="cursor"></span>    
+    <button id="enter-btn" onclick="enterSystem()">Entrar no sistema</button>    
+  </div>    
+
+  <!-- Núcleo -->    
+  <section id="next-section" class="futuristic-section">    
+    <h2 class="glow-text">Núcleo Emocional Ativo</h2>    
+    <p class="typing-text"></p>    
+    <div class="status-panel">    
+      <pre>
+Status do sistema:    
+- Amor: 100%    
+- Paixão: 100%    
+- Confiança: 100%    
+- Saudade: 100%    
+- Conexão: Estável    
+      </pre>    
+    </div>    
+    <button class="neon-button" onclick="mostrarRobo()">Acessar Robô</button>    
+  </section>    
+
+  <!-- Frodo -->
+  <section id="robo-section" class="futuristic-section">
+    <h2 class="glow-text">Frodo</h2>
+    <img src="Frodo.PNG" alt="Frodo Fofo" class="robo-img" />
+    <p id="frase" class="frase-terminal">Você ainda domina minha mente.</p>    
+    <button class="neon-button" onclick="trocarFrase()">Nova mensagem</button>
+    <button class="neon-button" onclick="toggleDiario()">Diário do Frodo</button>
+    
+    <!-- Novo Diário Interativo -->
+    <div id="diario-container" class="diario-interativo hidden">
+      <div class="diario-book">
+        <div class="diario-page">
+          <div class="diario-header">
+            <span id="diario-numero">Página 1</span>
+            <span class="diario-icon">📖</span>
+          </div>
+          <div class="diario-content">
+            <p id="diario-texto"></p>
+          </div>
+          <div class="diario-footer">
+            <button class="diario-btn" onclick="paginaAnterior()">◀️</button>
+            <button class="diario-btn" onclick="proximaPagina()">▶️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="neon-button" onclick="mostrarTrilha()">Explorar Memórias</button>    
+  </section>    
+
+  <!-- Trilha Sonora -->    
+  <section id="music-section" class="futuristic-section">    
+    <h2 class="glow-text">Trilha Sonora Emocional</h2>    
+    <p class="music-desc">Meu coração pulsa na mesma frequência.</p>    
+    <div id="playlist-container"></div>    
+    <div id="music-player">    
+      <h3 id="track-title">Carregando...</h3>    
+      <div id="player-container"></div>    
+      <button class="neon-button" onclick="nextTrack()">Próxima música</button>    
+    </div>    
+  </section>    
+
+  <!-- Mensagem Secreta -->    
+  <section id="mensagem-section" class="futuristic-section">    
+    <h2 class="glow-text">Mensagem Secreta do Coração</h2>    
+    <div id="carta-digitada" class="terminal-carta"></div>    
+    <button class="neon-button" onclick="iniciarCarta()">Ler mensagem secreta</button>
+    
+    <!-- Escolha Diária -->
+    <div class="escolha-diaria">
+      <button class="neon-button" onclick="registrarEscolha()">[ Escolher você novamente ]</button>
+      <div id="resultado-escolha" class="resultado-escolha hidden">
+        <p id="dia-escolha"></p>
+        <p class="status-sucesso">Escolha registrada com sucesso.</p>
+        <p><strong>Motivo:</strong></p>
+        <p id="motivo-escolha" class="motivo-text"></p>
+      </div>
+    </div>
+  </section>    
+
+  <!-- Nossa Jornada (Contador) -->
+  <section id="contador-section" class="futuristic-section">
+    <h2 class="glow-text">Nossa Jornada</h2>
+    <div class="contador-card">
+      <div id="contador" class="contador-amor">Carregando tempo...</div>
+      <p class="contador-frase">Cada segundo ao seu lado é um presente que eu guardo com todo carinho.</p>
+      
+      <div class="foto-unica-wrapper">
+        <div class="foto-unica-container">
+          <img id="foto-casal" src="Amor.JPEG" alt="Nossa Foto Especial" class="foto-unica-img" />
+          <div class="foto-overlay">Nossa História 💜</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Item Lendário -->
+  <section id="item-lendario-section" class="futuristic-section">
+    <h2 class="glow-text">ITEM LENDÁRIO</h2>
+    <div class="item-card">
+      <div class="item-header">
+        <span class="rarity-legendary">LENDÁRIO</span>
+      </div>
+      <div class="item-body">
+        <p><strong>Nome:</strong> Marcos</p>
+        <p><strong>Raridade:</strong> Única</p>
+        <p><strong>Classe:</strong> Insubstituível</p>
+        <p><strong>Peso:</strong> Carrega meu coração inteiro</p>
+        <p><strong>Valor de mercado:</strong> Incalculável</p>
+      </div>
+      <div class="item-footer">
+        "Um tesouro encontrado em meio ao caos do mundo."
+      </div>
+    </div>
+  </section>
+
+  <!-- Cápsulas de Memória -->
+  <section id="capsulas-section" class="futuristic-section">
+    <h2 class="glow-text">💌 Cápsulas de Memória</h2>
+    <div class="capsulas-grid">
+      <div class="capsula" onclick="abrirCapsula(1)">[ MEMÓRIA 01 ]</div>
+      <div class="capsula" onclick="abrirCapsula(2)">[ MEMÓRIA 02 ]</div>
+      <div class="capsula" onclick="abrirCapsula(3)">[ MEMÓRIA 03 ]</div>
+    </div>
+    <div id="capsula-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Acesso Restrito</h3>
+        <p>Insira a senha para desbloquear esta memória:</p>
+        <input type="password" id="capsula-senha" placeholder="Senha...">
+        <button class="neon-button" onclick="verificarSenha()">Desbloquear</button>
+        <div id="memoria-texto" class="hidden"></div>
+        <button class="neon-button" onclick="fecharModal()">Fechar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fragmentos de Amor -->
+  <section id="fragmentos-section" class="futuristic-section">
+    <h2 class="glow-text">Fragmentos de Amor</h2>
+    <p class="music-desc">Frases que me lembram você.</p>
+    <div id="fragmentos-container" class="fragmentos-container">
+      <div class="fragmento-card">
+        <p class="frase">"É que você nasceu pra ser minha, vamos dividir uma casinha, uma cama, dormir de conchinha, Deus abençoou a nossa união"<br><span class="autor">- Os anjos cantam </span></p>
+        <p class="explicacao">Não existe um único dia em que eu não agradeça a Deus por você existir, acredito que oro mais por você do que por mim, porque o que preciso já tenho ao meu lado, então apenas posso agradecer e pedir para ele que você tenha tudo o que precisa.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Essa é minha escolha, e eu escolho você, eu não preciso de imortalidade você é minha eternidade."<br><span class="autor">- Caraval</span></p>
+        <p class="explicacao">Não existe um paraíso em que você não esteja.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Porque mesmo que não dure, mesmo que tudo de errado e eu fique sozinho e miserável, a menor chance de uma vida perfeita com você é infinitamente melhor do que uma vida imortal sem você."<br><span class="autor">- The Vampire Diaries</span></p>
+        <p class="explicacao">Percebi que te amava quando pela primeira vez eu quis ficar em um lugar e não ir embora, permanecer, persistir, tentar, mesmo com defeitos porque até eles aprendi a amar. </p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Você acha que existe um dia perfeito?"<br><span class="autor">- Por Lugares Incríveis</span></p>
+        <p class="explicacao">Um dia perfeito para mim é aquele em que você faz parte, mesmo que em um lugar distante, porque saber que você existe já é suficiente.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Eu te reconheceria na completa escuridão se eu fosse mudo e você surdo, eu te reconheceria em outras vidas, em outros corpos, em outros tempos e te amaria em cada um deles, até que a ultima estrela do universo se apagasse na completa escuridão."<br><span class="autor">- A Canção de Aquiles</span></p>
+        <p class="explicacao">Você é único para mim, não existe qualquer outra parte de você no universo e nenhuma parte de mim que não te amaria, mesmo que você não me amasse de volta.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Em todas as vidas eu sei que irei te fazer me amar, porque gosto tanto de você que posso enlouquecer."<br><span class="autor">- Alquimia das Almas</span></p>
+        <p class="explicacao">Peço todos os dias que Deus me permita te amar até nas próximas vidas que viram, pois uma única vida nunca será o suficiente para te amar na intensidade que meu peito transborda.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Não importa, nada disso importa, você não precisa ser mais a garota do tempo, e dai que a gente nunca mais veja o sol? eu quero você mais do que qualquer céu azul, o tempo que se dane."<br><span class="autor">- O Tempo Com Você</span></p>
+        <p class="explicacao">Do que adiantaria um céu azul em um mundo que você não estivesse? Quando reassisti pela quarta vez conseguia apenas pensar em você.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"I don't wanna get undressed<br>For a new person all over again<br>I don't wanna kiss someone else's neck<br>And have to pretend it's yours instead<br><br>And I don't wanna learn another scent<br>I don't want the children of another girl<br>To have eyes of the man I won't forget<br>I won't forget"<br><span class="autor">- Sombr - Undressed</span></p>
+        <p class="explicacao">Se não for com você, não quero que seja com mais ninguém.</p>
+      </div>
+      <div class="fragmento-card">
+        <p class="frase">"Eu amo tudo em você, mesmo as parte que você considera serem obscuras, e vergonhosas, cada cicatriz, cada falha, cada imperfeição. Eu amo você."<br><span class="autor">- Bridgerton</span></p>
+        <p class="explicacao">Amar é uma escolha e eu escolho te amar todos os dias, paixão pode ser algo passageiro, mas o amor é o que permanece mesmo nas dificuldades, podendo ir e escolhendo mesmo assim ficar..</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- O Condado -->
+  <section id="condado-section" class="futuristic-section">
+    <h2 class="glow-text">🏡 O Condado</h2>
+    <div class="status-panel condado-panel">
+      <h3>Status do Lar</h3>
+      <p><strong>Localização:</strong> Ao seu lado</p>
+      <p><strong>Segurança:</strong> 100%</p>
+      <p><strong>Paz:</strong> 100%</p>
+      <p><strong>Saudade:</strong> Ativa</p>
+      <div class="divider"></div>
+      <p class="final-destiny"><strong>Destino:</strong> Construindo uma vida juntos...</p>
+    </div>
+  </section>
+
+  <!-- Página de Error:404 -->    
+  <section id="error-section" class="futuristic-section">    
+    <h1 class="error-code">ERROR:404</h1>
+    <p>Esse caminho ainda não está liberado, volte e crie mais memórias com a administradora.</p>    
+    <button class="neon-button" onclick="reiniciarSistema()">Reiniciar Sistema</button>
+  </section> 
+
+  <!-- Sons -->
+  <audio id="type-sound" src="https://www.soundjay.com/keyboard/sounds/keyboard-1.mp3" preload="auto"></audio>
+  <audio id="glitch-sound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <!-- Scripts -->
+  <script src="https://www.youtube.com/iframe_api"></script>    
+  <script src="script.js"></script>    
+</body>    
+</html>
