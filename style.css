@@ -1,0 +1,709 @@
+body {
+  background-color: #000;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.menu-terminal {
+  background-color: #000;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #00ff00;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu-terminal a {
+  color: #00ff00;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.menu-terminal a:hover {
+  background-color: #00ff00;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+#terminal-container {
+  padding: 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#terminal {
+  background: #111;
+  padding: 20px;
+  width: 80%;
+  max-width: 700px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px #00ff00;
+  border-radius: 10px;
+  font-size: 18px;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background: #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+#enter-btn {
+  display: none;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#enter-btn:hover {
+  background: #00ff00;
+  color: #000;
+}
+
+.futuristic-section {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  border-top: 1px solid #00ff00;
+  border-bottom: 1px solid #00ff00;
+  max-width: 900px;
+  margin: auto;
+}
+
+.futuristic-section.active {
+  display: block;
+}
+
+.glow-text {
+  font-size: 2em;
+  text-shadow: 0 0 8px #00ff00;
+  margin-bottom: 20px;
+}
+
+.typing-text {
+  font-size: 1.2em;
+  border-right: 2px solid #00ff00;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink-caret 1s step-end infinite;
+  display: inline-block;
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+.status-panel {
+  background: #001100;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px auto;
+  box-shadow: inset 0 0 10px #00ff00;
+  text-align: left;
+  max-width: 500px;
+}
+
+.neon-button {
+  background: transparent;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00ff00;
+  margin: 10px;
+  transition: all 0.3s;
+}
+
+.neon-button:hover {
+  background: #00ff00;
+  color: #000;
+  box-shadow: 0 0 20px #00ff00;
+}
+
+.robo-img {
+  width: 140px;
+  max-width: 50%;
+  animation: flutuar 3s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.frase-terminal {
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+/* Diário Interativo do Frodo */
+.diario-interativo {
+  margin: 30px auto;
+  max-width: 600px;
+  perspective: 1000px;
+}
+
+.diario-book {
+  background: #1a1a1a;
+  border: 2px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  padding: 5px;
+  position: relative;
+}
+
+.diario-page {
+  background: #0a0a0a;
+  border: 1px solid #00ff0033;
+  padding: 30px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-image: radial-gradient(#00ff0011 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.diario-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #00ff0033;
+  padding-bottom: 10px;
+  font-weight: bold;
+  color: #00ff00;
+}
+
+.diario-content {
+  flex-grow: 1;
+  padding: 20px 0;
+  font-style: italic;
+  line-height: 1.8;
+  font-size: 1.1em;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+.diario-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #00ff0033;
+  padding-top: 15px;
+}
+
+.diario-btn {
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.diario-btn:hover {
+  background: #00ff00;
+  color: #000;
+}
+
+/* Trilha Sonora - Melhorada */
+#playlist-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 15px;
+  gap: 10px;
+  margin: 20px auto 30px;
+  max-width: 800px;
+  background: rgba(0, 255, 0, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 transparent;
+}
+
+#playlist-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+#playlist-container::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 10px;
+}
+
+.track-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.85em;
+  padding: 8px 15px;
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.track-button:hover {
+  background: #00ff00;
+  color: #000;
+}
+
+/* Escolha Diária */
+.escolha-diaria {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #00ff0033;
+}
+
+.resultado-escolha {
+  margin-top: 20px;
+  padding: 20px;
+  background: #001100;
+  border-radius: 10px;
+  border: 1px solid #00ff00;
+  animation: fadeIn 0.5s ease;
+}
+
+.status-sucesso {
+  color: #00ff88;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.motivo-text {
+  font-size: 1.3em;
+  color: #fff;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+/* Mapa da Jornada */
+.timeline {
+  position: relative;
+  max-width: 600px;
+  margin: 40px auto;
+  padding-left: 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  text-align: left;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border: 2px solid #00ff00;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item.active::before {
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: #00ff00;
+  margin-bottom: 5px;
+}
+
+/* Item Lendário */
+.item-card {
+  background: #111;
+  border: 2px solid #b8860b;
+  padding: 20px;
+  max-width: 400px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
+  text-align: left;
+}
+
+.rarity-legendary {
+  color: #ffa500;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ffa500;
+  font-size: 1.2em;
+}
+
+.item-body {
+  margin: 20px 0;
+  line-height: 1.8;
+}
+
+.item-footer {
+  font-style: italic;
+  color: #888;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}
+
+/* Cápsulas de Memória */
+.capsulas-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.capsula {
+  padding: 15px 25px;
+  border: 1px solid #00ff00;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+
+.capsula:hover {
+  background: #00ff00;
+  color: #000;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #111;
+  padding: 40px;
+  border: 1px solid #00ff00;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-content input {
+  background: #000;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 10px;
+  width: 100%;
+  margin: 20px 0;
+  font-family: inherit;
+}
+
+/* O Condado */
+.condado-panel {
+  border: 2px solid #00ff00;
+  text-align: center;
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.condado-panel h3 {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+  margin-bottom: 20px;
+}
+
+.divider {
+  height: 1px;
+  background: #00ff0033;
+  margin: 20px 0;
+}
+
+.final-destiny {
+  font-size: 1.2em;
+  color: #fff;
+}
+
+/* Estrelas e Frases */
+#star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.star-phrase-overlay {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-style: italic;
+  text-shadow: 0 0 15px #fff;
+  z-index: 20;
+  pointer-events: none;
+  font-size: 1.5em;
+  text-align: center;
+  width: 80%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.toggle-stars {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  display: block; /* Visível desde o início */
+}
+
+/* Fragmentos */
+.fragmentos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.fragmento-card {
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 4px solid #00ff00;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,255,0,0.1);
+}
+
+.fragmento-card .frase {
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.fragmento-card .autor {
+  display: block;
+  margin-top: 10px;
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.fragmento-card .explicacao {
+  font-size: 0.95em;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Contador */
+.contador-card {
+  max-width: 700px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(0,255,0,0.05);
+  border: 1px solid rgba(0,255,0,0.2);
+}
+
+.contador-amor {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 25px 0;
+  color: #00ff88;
+  text-shadow: 0 0 15px #00ff88;
+}
+
+.foto-unica-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.foto-unica-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 4px solid #00ff00;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+}
+
+.foto-unica-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.terminal-carta {
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ff00;
+  font-size: 1.1em;
+  color: #00ff00;
+  white-space: pre-wrap;
+  text-align: left;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Responsividade (Ajustes Finais) === */
+
+@media (max-width: 768px) {
+  .menu-terminal {
+    gap: 5px;
+    padding: 15px 5px;
+  }
+
+  .menu-terminal a {
+    font-size: 0.75em;
+  }
+
+  .glow-text {
+    font-size: 1.5em;
+  }
+
+  #terminal {
+    width: 90%;
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .futuristic-section {
+    padding: 40px 15px;
+  }
+
+  .status-panel {
+    width: 90%;
+    font-size: 0.85em;
+  }
+
+  .robo-img {
+    width: 100px;
+  }
+
+  .diario-page {
+    padding: 20px;
+    min-height: 250px;
+  }
+
+  .diario-content {
+    font-size: 0.95em;
+  }
+
+  .terminal-carta {
+    padding: 20px;
+    font-size: 0.95em;
+  }
+
+  .contador-amor {
+    font-size: 1.4rem;
+  }
+
+  .foto-unica-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .fragmento-card {
+    padding: 15px;
+  }
+
+  .fragmento-card .frase {
+    font-size: 0.9em;
+  }
+
+  .fragmento-card .explicacao {
+    font-size: 0.85em;
+  }
+
+  .modal-content {
+    padding: 25px;
+  }
+
+  .star-phrase-overlay {
+    font-size: 1.1em;
+    top: 40%;
+  }
+}
+
+/* Ajustes para celulares muito pequenos */
+@media (max-width: 480px) {
+  .menu-terminal a {
+    font-size: 0.65em;
+  }
+
+  .glow-text {
+    font-size: 1.3em;
+  }
+
+  .contador-amor {
+    font-size: 1.2rem;
+  }
+
+  .foto-unica-container {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .neon-button {
+    padding: 8px 15px;
+    font-size: 0.85em;
+  }
+}
